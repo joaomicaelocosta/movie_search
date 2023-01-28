@@ -11,6 +11,8 @@
 
 <script>
 import SearchIcon from '@/assets/imgs/SearchIcon.vue'
+import axios from "axios";
+
 export default {
   name: 'Search',
   components: {
@@ -22,11 +24,16 @@ export default {
     }
   },
   methods: {
-    search() {
+    async search() {
       if(this.query) {
-        this.$store.dispatch('getMovieLoad', this.query).then(() => {
+        await axios.get('https://api.themoviedb.org/3/search/movie?api_key=37806dd1300837fa217e0539b5252818&query='+this.query, {
+            headers: {
+                'Content-Type' : 'application/json;charset=utf-8',
+            }
+        }).then((res) => {
+          this.$store.dispatch('getMovieLoad', {...res.data, query:this.query})
           this.$router.push("/list")
-        });
+        })
       }
     }
   }

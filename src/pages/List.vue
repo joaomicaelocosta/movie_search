@@ -37,10 +37,10 @@ export default {
             return this.$store.state.movies;
         },
         query() {
-            return this.$store.state.query ? this.$store.state.query : 'No Search';
+            return this.$store.state.query;
         },
         count() {
-            return this.$store.state.count ? this.$store.state.count : 0;
+            return this.$store.state.count;
         }
     }
 
@@ -49,12 +49,11 @@ export default {
 
 <style lang="scss">
 .section {
-    margin-top: 10rem;
+    margin-top: 66px;
 }
 .row {
     display: flex;
     justify-content: space-between;
-    padding: 0 40px;
 
     .result_info {
         text-align: left;
@@ -85,5 +84,10 @@ export default {
             line-height: 19px;
         }
     }
+}
+.movie_list {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 </style>

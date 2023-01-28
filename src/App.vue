@@ -12,6 +12,9 @@ export default {
   components: {
     Header
   },
+  beforeCreate() {
+    this.$store.dispatch('getGenreList');
+  }
 }
 </script>
 
@@ -26,5 +29,14 @@ html{
   text-align: center;
   color: #ffffff;
   background-color: #09131A;
+}
+body {
+  width: 1440px;
+  display: flex;
+  text-align: center;
+  margin:auto;
+}
+#app{
+  width: 100%;
 }
 </style>
